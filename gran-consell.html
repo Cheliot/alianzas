@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Consell Maya Quetzal</title>
+    <!-- Meta tags per SEO -->
+    <meta name="description" content="Gran Consell Maya Quetzal - Temple Vivent Unificat. Cerimònies sagrades i trobades dels guardians maies.">
+    <meta name="keywords" content="maya, quetzal, cerimònies, Palenque, Sisbichén, Iximché">
+    <meta property="og:title" content="Gran Consell Maya Quetzal">
+    <meta property="og:description" content="El Teixit de la Profecia - Temple Vivent Unificat">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background:
+                radial-gradient(ellipse at top left, rgba(138, 180, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at top right, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0612 0%, #1a0f2e 50%, #0f0c29 100%);
+            color: #fff8f0; /* Millorat contrast */
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Botó per tornar a la pàgina de coordinació */
+        .back-to-coordination {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(138, 180, 248, 0.2), rgba(255, 215, 0, 0.2));
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 24px;
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+        }
+
+        .back-to-coordination:hover {
+            background: linear-gradient(135deg, rgba(138, 180, 248, 0.3), rgba(255, 215, 0, 0.3));
+            border-color: rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            padding: 48px 24px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            backdrop-filter: blur(20px);
+        }
+
+        h1 {
+            font-family: 'Google Sans Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #8ab4f8 0%, #ffd700 50%, #8ab4f8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.15));
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #ffe4b5;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 32px 0;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(138, 180, 248, 0.15));
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+            padding: 10px 24px;
+            cursor: pointer;
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Google Sans', sans-serif;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+        }
+
+        .lang-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(138, 180, 248, 0.25));
+            border-color: rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ffd700 0%, #8ab4f8 100%);
+            border-color: transparent;
+            color: #1a0f2e;
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .section {
+            margin: 56px 0;
+        }
+
+        h2 {
+            font-family: 'Google Sans Display', sans-serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+            background: linear-gradient(135deg, #8ab4f8 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-left: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(66, 66, 66, 0.3) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transició millorada */
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 12px 32px rgba(255, 215, 0, 0.2);
+        }
+
+        .card h3 {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #ffd700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card p {
+            margin: 8px 0;
+            color: #fff8f0; /* Millorat contrast */
+            font-size: 0.875rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card strong {
+            color: #ffed4e;
+            font-weight: 500;
+        }
+
+        /* Colors per elements amb fusió Gemini + daurat */
+        .foc {
+            --accent-color: #ff6b35;
+            border-left: 3px solid #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 215, 0, 0.08));
+        }
+        .aire {
+            --accent-color: #8ab4f8;
+            border-left: 3px solid #8ab4f8;
+            background: linear-gradient(135deg, rgba(138, 180, 248, 0.15), rgba(255, 215, 0, 0.08));
+        }
+        .terra {
+            --accent-color: #fdd663;
+            border-left: 3px solid #fdd663;
+            background: linear-gradient(135deg, rgba(253, 214, 99, 0.15), rgba(255, 215, 0, 0.08));
+        }
+        .aigua {
+            --accent-color: #4a90e2;
+            border-left: 3px solid #4a90e2;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(255, 215, 0, 0.08));
+        }
+
+        /* Modal fusion Gemini + daurat */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 24px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 640px;
+            width: 100%;
+            position: relative;
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255, 215, 0, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(255, 215, 0, 0.2); /* Ombra millorada */
+            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(138, 180, 248, 0.2));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #ffd700;
+            transition: all 0.3s;
+        }
+
+        .close:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(138, 180, 248, 0.3));
+            transform: rotate(90deg);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .modal h2 {
+            color: #ffd700;
+            margin-bottom: 24px;
+            font-size: 1.75rem;
+            padding-left: 0;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+        }
+
+        .modal h3 {
+            font-family: 'Google Sans', sans-serif;
+            color: #8ab4f8;
+            margin: 24px 0 12px 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .modal p {
+            color: #fff8f0; /* Millorat contrast */
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .modal strong {
+            color: #ffed4e;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 12px 0;
+            padding-left: 28px;
+            color: #fff8f0; /* Millorat contrast */
+            position: relative;
+        }
+
+        li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-size: 1rem;
+        }
+
+        /* Chip per disponibilitat amb estil fusion */
+        .chip {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 8px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(138, 180, 248, 0.2));
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Botons Flotants */
+        .floating-button {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+        }
+        .floating-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Nexia - Assistente Virtual */
+        .nexia-button {
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ffd700 0%, #8ab4f8 100%);
+            font-size: 28px;
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.25);
+        }
+        .nexia-button:hover {
+            box-shadow: 0 6px 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Botó de Descarregar */
+        .download-button {
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #43a047 0%, #1de9b6 100%);
+            color: white;
+        }
+        .download-button:hover {
+             box-shadow: 0 6px 30px rgba(29, 233, 182, 0.5);
+        }
+        .download-button svg {
+            width: 28px;
+            height: 28px;
+        }
+
+
+        .nexia-chat {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 50px rgba(255, 215, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .nexia-chat.open {
+            display: flex;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nexia-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nexia-header h3 {
+            margin: 0;
+            color: #ffd700;
+            font-family: 'Google Sans Display', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .nexia-header p {
+            margin: 4px 0 0 0;
+            color: #8ab4f8;
+            font-size: 0.75rem;
+        }
+
+        .nexia-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            color: #ffd700;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .nexia-close:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .nexia-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nexia-message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nexia-message.bot {
+            align-self: flex-start;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(138, 180, 248, 0.15));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #fff8f0; /* Millorat contrast */
+        }
+
+        .nexia-message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #8ab4f8, #ffd700);
+            color: #1a0f2e;
+            font-weight: 500;
+        }
+
+        .nexia-input-area {
+            padding: 16px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            display: flex;
+            gap: 8px;
+        }
+
+        .nexia-input {
+            flex: 1;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 10px 16px;
+            color: #fff8f0; /* Millorat contrast */
+            font-family: 'Google Sans', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .nexia-input::placeholder {
+            color: rgba(255, 215, 0, 0.5);
+        }
+
+        .nexia-input:focus {
+            outline: none;
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .nexia-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd700, #8ab4f8);
+            border: none;
+            cursor: pointer;
+            color: #1a0f2e;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .nexia-send:hover {
+            transform: scale(1.1);
+        }
+
+        .nexia-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .nexia-suggestion {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            color: #ffd700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nexia-suggestion:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 24px; }
+            .nexia-chat {
+                right: 10px;
+                left: 10px;
+                width: auto;
+                bottom: 90px;
+            }
+            .nexia-button {
+                right: 20px;
+                bottom: 20px;
+            }
+             .download-button {
+                left: 20px;
+                bottom: 20px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(138, 180, 248, 0.4));
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(138, 180, 248, 0.6));
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-to-coordination">← Tornar a Coordinació del Quetzal</a>
+
+    <header role="banner">
+        <h1 id="main-title">✨ Gran Consell Maya Quetzal ✨</h1>
+        <p class="subtitle" id="main-subtitle">El Teixit de la Profecia - Temple Vivent Unificat</p>
+    </header>
+
+    <nav role="navigation" aria-label="Idiomes disponibles" class="languages">
+        <button class="lang-btn active" onclick="switchLang('ca', event)">Català</button>
+        <button class="lang-btn" onclick="switchLang('es', event)">Español</button>
+        <button class="lang-btn" onclick="switchLang('en', event)">English</button>
+    </nav>
+
+    <main role="main">
+        <div class="section">
+            <h2 id="section-title-pilars">El Quadrat Sagrat: Pilars i Cerimònies</h2>
+            <div class="grid" id="cards-container"></div>
+        </div>
+
+        <div class="section">
+            <h2 id="section-title-trobades">Trobades Sagrades</h2>
+            <div class="grid" id="trobades-container"></div>
+        </div>
+
+        <div class="section">
+            <h2 id="section-title-projectes">Projectes Sagrats</h2>
+            <div class="grid" id="projectes-container"></div>
+        </div>
+    </main>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal" onclick="if(event.target === this) closeModal()">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()" aria-label="Tancar modal">✕</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- Botó de Descarregar -->
+<button class="floating-button download-button" onclick="downloadSourceCode()" title="Descarregar Codi Font">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+    </svg>
+</button>
+
+<!-- Nexia - Assistent Virtual -->
+<button class="floating-button nexia-button" onclick="toggleNexia()" aria-label="Obrir assistent virtual Nexia">✨</button>
+<div class="nexia-chat" id="nexiaChat">
+    <div class="nexia-header">
+        <div>
+            <h3>✨ Nexia</h3>
+            <p>Guardiana del Temple Vivent</p>
+        </div>
+        <button class="nexia-close" onclick="toggleNexia()" aria-label="Tancar xat">✕</button>
+    </div>
+    <div class="nexia-messages" id="nexiaMessages"></div>
+    <div class="nexia-input-area">
+        <input type="text" class="nexia-input" id="nexiaInput" onkeypress="if(event.key==='Enter') sendNexiaMessage()" placeholder="Pregunta a Nexia...">
+        <button class="nexia-send" onclick="sendNexiaMessage()" aria-label="Enviar missatge">
+            <span aria-hidden="true">➤</span>
+        </button>
+    </div>
+</div>
+
+<script>
+const ceremonies = {
+    ca: [
+        {
+            nom: "Palenque",
+            regio: "Chiapas, Mèxic",
+            pilar: "abuela Adriana - Cap de la Flama del Sud",
+            data: "21 de desembre de 2025",
+            alineacio: "Solstici d'Hivern",
+            element: "foc",
+            disponibilitat: "Disponible",
+            seu: "La Ventana, Chiapas",
+            sub: [
+                { nom: "Yaxchilán", proposit: "Honrar el Llinatge" },
+                { nom: "Bonampak", proposit: "Activar els Colors" }
+            ]
+        },
+        {
+            nom: "Sisbichén",
+            regio: "Yucatán, Mèxic",
+            pilar: "abuelo Antonio - Guardià de l'Alè de l'Est",
+            data: "20 de març de 2026",
+            alineacio: "Equinocci de Primavera",
+            element: "aire",
+            disponibilitat: "Limitada - Recolliment Sagrat",
+            seu: "Sisbichén, Yucatán",
+            sub: [
+                { nom: "Chichén Itzá", proposit: "Despertar la Serp" },
+                { nom: "Uxmal", proposit: "Invocar la Pluja" }
+            ]
+        },
+        {
+            nom: "Cerra Tusa",
+            regio: "Medellín, Colòmbia",
+            pilar: "abuelo Miguel - Ancora de la Terra del Nord",
+            data: "21 de juny de 2026",
+            alineacio: "Solstici d'Estiu",
+            element: "terra",
+            disponibilitat: "Disponible",
+            seu: "Medellín, Colòmbia",
+            sub: [
+                { nom: "San Agustín", proposit: "Dialogar amb els Guardians" },
+                { nom: "Tierradentro", proposit: "Descendir per Renàixer" }
+            ]
+        },
+        {
+            nom: "Iximché",
+            regio: "Guatemala City, Guatemala",
+            pilar: "abuela Mima - Veu de les Aigües de l'Oest",
+            data: "22 de setembre de 2026",
+            alineacio: "Equinocci de Tardor",
+            element: "aigua",
+            disponibilitat: "Disponible",
+            seu: "Guatemala City, Guatemala",
+            sub: [
+                { nom: "Tikal", proposit: "Escoltar els Jaguars Estel·lars" },
+                { nom: "Llac Atitlán", proposit: "Meditar en les Aigües Primordials" }
+            ]
+        }
+    ],
+    es: [
+        {
+            nom: "Palenque",
+            regio: "Chiapas, México",
+            pilar: "abuela Adriana - Jefa de la Llama del Sur",
+            data: "21 de diciembre de 2025",
+            alineacio: "Solsticio de Invierno",
+            element: "foc",
+            disponibilitat: "Disponible",
+            seu: "La Ventana, Chiapas",
+            sub: [
+                { nom: "Yaxchilán", proposit: "Honrar el Linaje" },
+                { nom: "Bonampak", proposit: "Activar los Colores" }
+            ]
+        },
+        {
+            nom: "Sisbichén",
+            regio: "Yucatán, México",
+            pilar: "abuelo Antonio - Guardián del Aliento del Este",
+            data: "20 de marzo de 2026",
+            alineacio: "Equinoccio de Primavera",
+            element: "aire",
+            disponibilitat: "Limitada - Recogimiento Sagrado",
+            seu: "Sisbichén, Yucatán",
+            sub: [
+                { nom: "Chichén Itzá", proposit: "Despertar la Serpiente" },
+                { nom: "Uxmal", proposit: "Invocar la Lluvia" }
+            ]
+        },
+        {
+            nom: "Cerra Tusa",
+            regio: "Medellín, Colombia",
+            pilar: "abuelo Miguel - Ancla de la Tierra del Norte",
+            data: "21 de junio de 2026",
+            alineacio: "Solsticio de Verano",
+            element: "terra",
+            disponibilitat: "Disponible",
+            seu: "Medellín, Colombia",
+            sub: [
+                { nom: "San Agustín", proposit: "Dialogar con los Guardianes" },
+                { nom: "Tierradentro", proposit: "Descender para Renacer" }
+            ]
+        },
+        {
+            nom: "Iximché",
+            regio: "Guatemala City, Guatemala",
+            pilar: "abuela Mima - Voz de las Aguas del Oeste",
+            data: "22 de septiembre de 2026",
+            alineacio: "Equinoccio de Otoño",
+            element: "aigua",
+            disponibilitat: "Disponible",
+            seu: "Guatemala City, Guatemala",
+            sub: [
+                { nom: "Tikal", proposit: "Escuchar a los Jaguares Estelares" },
+                { nom: "Lago Atitlán", proposit: "Meditar en las Aguas Primordiales" }
+            ]
+        }
+    ],
+    en: [
+        {
+            nom: "Palenque",
+            regio: "Chiapas, Mexico",
+            pilar: "abuela Adriana - Chief of the Southern Flame",
+            data: "December 21, 2025",
+            alineacio: "Winter Solstice",
+            element: "foc",
+            disponibilitat: "Available",
+            seu: "La Ventana, Chiapas",
+            sub: [
+                { nom: "Yaxchilán", proposit: "To Honor the Lineage" },
+                { nom: "Bonampak", proposit: "To Activate the Colors" }
+            ]
+        },
+        {
+            nom: "Sisbichén",
+            regio: "Yucatán, Mexico",
+            pilar: "abuelo Antonio - Guardian of the Eastern Breath",
+            data: "March 20, 2026",
+            alineacio: "Spring Equinox",
+            element: "aire",
+            disponibilitat: "Limited - Sacred Retreat",
+            seu: "Sisbichén, Yucatán",
+            sub: [
+                { nom: "Chichén Itzá", proposit: "To Awaken the Serpent" },
+                { nom: "Uxmal", proposit: "To Invoke the Rain" }
+            ]
+        },
+        {
+            nom: "Cerra Tusa",
+            regio: "Medellín, Colombia",
+            pilar: "abuelo Miguel - Anchor of the Northern Earth",
+            data: "June 21, 2026",
+            alineacio: "Summer Solstice",
+            element: "terra",
+            disponibilitat: "Available",
+            seu: "Medellín, Colombia",
+            sub: [
+                { nom: "San Agustín", proposit: "To Dialogue with the Guardians" },
+                { nom: "Tierradentro", proposit: "To Descend to be Reborn" }
+            ]
+        },
+        {
+            nom: "Iximché",
+            regio: "Guatemala City, Guatemala",
+            pilar: "abuela Mima - Voice of the Western Waters",
+            data: "September 22, 2026",
+            alineacio: "Autumn Equinox",
+            element: "aigua",
+            disponibilitat: "Available",
+            seu: "Guatemala City, Guatemala",
+            sub: [
+                { nom: "Tikal", proposit: "To Listen to the Star Jaguars" },
+                { nom: "Lake Atitlán", proposit: "To Meditate in the Primordial Waters" }
+            ]
+        }
+    ]
+};
+
+let currentLang = 'ca';
+let nexiaTimeout; // Per a debounce
+
+const translations = {
+    ca: {
+        main_title: "Gran Consell Maya Quetzal",
+        main_subtitle: "El Teixit de la Profecia - Temple Vivent Unificat",
+        section_pilars: "El Quadrat Sagrat: Pilars i Cerimònies",
+        section_trobades: "Trobades Sagrades",
+        section_projectes: "Projectes Sagrats",
+        trobada1_titol: "Reunió Interna d'Alineació",
+        trobada1_data: "22 d'Octubre 2025",
+        trobada1_hora: "3:00 PM CST",
+        trobada1_participants: "Equips Regionals, Jody, Bonita, Kristine",
+        trobada1_desc: "Coordinació de la resposta unificada i preparació per al Consell. Aquesta data representa una pausa sagrada per a una preparació més profunda.",
+        trobada2_titol: "Consell Principal de Planificació",
+        trobada2_data: "22 d'Octubre 2025",
+        trobada2_hora: "7:00 PM CST",
+        trobada2_participants: "Gran Consell (Adriana, Antonio, Miguel, Mima)",
+        trobada2_desc: "Planificació de les 4 grans cerimònies i disponibilitat dels guardians.",
+        projecte_titol: "App del Consell - Flux d'Abundància",
+        projecte_guardia: "Guardià Tecnològic",
+        projecte_estat: "Estat",
+        projecte_estat_valor: "Citrinitas - L'Or Alquímic",
+        projecte_desc: "L'alliberament s'anticipa per a finals d'Octubre 2025. Un pont entre l'antiga saviesa i el món modern.",
+        label_data: "Data",
+        label_hora: "Hora",
+        label_participants: "Participants",
+        label_regio: "Regió",
+        label_pilar: "Pilar",
+        label_alineacio: "Alineació",
+        label_disponibilitat: "Disponibilitat",
+        label_seu: "Seu Regional",
+        label_cerimonies_menors: "Cerimònies Menors",
+        nexia_welcome: "Salutacions, buscador de llum. ✨ Sóc Nexia, Guardiana del Temple Vivent Unificat. La saviesa dels quatre pilars ressona a través meu. Com puc il·luminar el teu camí avui?",
+        nexia_suggestion_pilars: "Els Quatre Pilars",
+        nexia_suggestion_ceremonies: "Cerimònies Sagrades",
+        nexia_suggestion_meetings: "Properes Reunions",
+        nexia_question_pilars: "Explica'm sobre els quatre pilars",
+        nexia_question_ceremonies: "Quines són les cerimònies principals?",
+        nexia_question_meetings: "Quines reunions teniu programades?",
+        nexia_input_placeholder: "Pregunta a Nexia..."
+    },
+    es: {
+        main_title: "Gran Consejo Maya Quetzal",
+        main_subtitle: "El Tejido de la Profecía - Templo Viviente Unificado",
+        section_pilars: "El Cuadrado Sagrado: Pilares y Ceremonias",
+        section_trobades: "Encuentros Sagrados",
+        section_projectes: "Proyectos Sagrados",
+        trobada1_titol: "Reunión Interna de Alineación",
+        trobada1_data: "22 de Octubre 2025",
+        trobada1_hora: "3:00 PM CST",
+        trobada1_participants: "Equipos Regionales, Jody, Bonita, Kristine",
+        trobada1_desc: "Coordinación de la respuesta unificada y preparación para el Consejo. Esta fecha representa una pausa sagrada para una preparación más profunda.",
+        trobada2_titol: "Consejo Principal de Planificación",
+        trobada2_data: "22 de Octubre 2025",
+        trobada2_hora: "7:00 PM CST",
+        trobada2_participants: "Gran Consejo (Adriana, Antonio, Miguel, Mima)",
+        trobada2_desc: "Planificación de las 4 grandes ceremonias y disponibilidad de los guardianes.",
+        projecte_titol: "App del Consejo - Flujo de Abundancia",
+        projecte_guardia: "Guardián Tecnológico",
+        projecte_estat: "Estado",
+        projecte_estat_valor: "Citrinitas - El Oro Alquímico",
+        projecte_desc: "La liberación se anticipa para finales de Octubre 2025. Un puente entre la antigua sabiduría y el mundo moderno.",
+        label_data: "Fecha",
+        label_hora: "Hora",
+        label_participants: "Participantes",
+        label_regio: "Región",
+        label_pilar: "Pilar",
+        label_alineacio: "Alineación",
+        label_disponibilitat: "Disponibilidad",
+        label_seu: "Sede Regional",
+        label_cerimonies_menors: "Ceremonias Menores",
+        nexia_welcome: "Saludos, buscador de luz. ✨ Soy Nexia, Guardiana del Templo Viviente Unificado. La sabiduría de los cuatro pilares resuena a través de mí. ¿Cómo puedo iluminar tu camino hoy?",
+        nexia_suggestion_pilars: "Los Cuatro Pilares",
+        nexia_suggestion_ceremonies: "Ceremonias Sagradas",
+        nexia_suggestion_meetings: "Próximas Reuniones",
+        nexia_question_pilars: "Háblame sobre los cuatro pilares",
+        nexia_question_ceremonies: "¿Cuáles son las ceremonias principales?",
+        nexia_question_meetings: "¿Qué reuniones tienen programadas?",
+        nexia_input_placeholder: "Pregunta a Nexia..."
+    },
+    en: {
+        main_title: "Mayan Quetzal Grand Council",
+        main_subtitle: "The Weaving of the Prophecy - Unified Living Temple",
+        section_pilars: "The Sacred Square: Pillars and Ceremonies",
+        section_trobades: "Sacred Gatherings",
+        section_projectes: "Sacred Projects",
+        trobada1_titol: "Internal Alignment Meeting",
+        trobada1_data: "October 22, 2025",
+        trobada1_hora: "3:00 PM CST",
+        trobada1_participants: "Regional Teams, Jody, Bonita, Kristine",
+        trobada1_desc: "Unified response coordination and preparation for the Council. This date represents a sacred pause for deeper preparation.",
+        trobada2_titol: "Principal Planning Council",
+        trobada2_data: "October 22, 2025",
+        trobada2_hora: "7:00 PM CST",
+        trobada2_participants: "Grand Council (Adriana, Antonio, Miguel, Mima)",
+        trobada2_desc: "Planning for the 4 grand ceremonies and guardian availability.",
+        projecte_titol: "Council App - Flow of Abundance",
+        projecte_guardia: "Technological Guardian",
+        projecte_estat: "Status",
+        projecte_estat_valor: "Citrinitas - The Alchemical Gold",
+        projecte_desc: "Release anticipated by the end of October 2025. A bridge between ancient wisdom and the modern world.",
+        label_data: "Date",
+        label_hora: "Time",
+        label_participants: "Participants",
+        label_regio: "Region",
+        label_pilar: "Pillar",
+        label_alineacio: "Alignment",
+        label_disponibilitat: "Availability",
+        label_seu: "Regional HQ",
+        label_cerimonies_menors: "Minor Ceremonies",
+        nexia_welcome: "Greetings, seeker of light. ✨ I am Nexia, Guardian of the Unified Living Temple. The wisdom of the four pillars resonates through me. How may I illuminate your path today?",
+        nexia_suggestion_pilars: "The Four Pillars",
+        nexia_suggestion_ceremonies: "Sacred Ceremonies",
+        nexia_suggestion_meetings: "Upcoming Meetings",
+        nexia_question_pilars: "Tell me about the four pillars",
+        nexia_question_ceremonies: "What are the main ceremonies?",
+        nexia_question_meetings: "What meetings are scheduled?",
+        nexia_input_placeholder: "Ask Nexia..."
+    }
+};
+
+function t(key) {
+    return translations[currentLang][key] || key;
+}
+
+function renderCards() {
+    const container = document.getElementById('cards-container');
+    const data = ceremonies[currentLang];
+
+    container.innerHTML = data.map((cer, idx) => `
+        <div class="card ${cer.element}" onclick="showModal(${idx})">
+            <h3>${cer.nom}</h3>
+            <p><strong>${t('label_regio')}:</strong> ${cer.regio}</p>
+            <p><strong>${t('label_pilar')}:</strong> ${cer.pilar}</p>
+            <p><strong>${t('label_data')}:</strong> ${cer.data}</p>
+            <p><strong>${t('label_alineacio')}:</strong> ${cer.alineacio}</p>
+            <p><strong>${t('label_seu')}:</strong> ${cer.seu}</p>
+        </div>
+    `).join('');
+}
+
+function renderTrobades() {
+    const container = document.getElementById('trobades-container');
+
+    container.innerHTML = `
+        <div class="card">
+            <h3>${t('trobada1_titol')}</h3>
+            <p><strong>${t('label_data')}:</strong> ${t('trobada1_data')}</p>
+            <p><strong>${t('label_hora')}:</strong> ${t('trobada1_hora')}</p>
+            <p><strong>${t('label_participants')}:</strong> ${t('trobada1_participants')}</p>
+            <p style="margin-top: 12px;">${t('trobada1_desc')}</p>
+        </div>
+        <div class="card">
+            <h3>${t('trobada2_titol')}</h3>
+            <p><strong>${t('label_data')}:</strong> ${t('trobada2_data')}</p>
+            <p><strong>${t('label_hora')}:</strong> ${t('trobada2_hora')}</p>
+            <p><strong>${t('label_participants')}:</strong> ${t('trobada2_participants')}</p>
+            <p style="margin-top: 12px;">${t('trobada2_desc')}</p>
+        </div>
+    `;
+}
+
+function renderProjectes() {
+    const container = document.getElementById('projectes-container');
+
+    container.innerHTML = `
+        <div class="card">
+            <h3>${t('projecte_titol')}</h3>
+            <p><strong>${t('projecte_guardia')}:</strong> Brian Nettles</p>
+            <p><strong>${t('projecte_estat')}:</strong> ${t('projecte_estat_valor')}</p>
+            <p style="margin-top: 12px;">${t('projecte_desc')}</p>
+        </div>
+    `;
+}
+
+function updateSectionTitles() {
+    document.getElementById('main-title').textContent = '✨ ' + t('main_title') + ' ✨';
+    document.getElementById('main-subtitle').textContent = t('main_subtitle');
+    document.getElementById('section-title-pilars').textContent = t('section_pilars');
+    document.getElementById('section-title-trobades').textContent = t('section_trobades');
+    document.getElementById('section-title-projectes').textContent = t('section_projectes');
+}
+
+function showModal(idx) {
+    try {
+        const data = ceremonies[currentLang][idx];
+        if (!data) throw new Error('Dades no trobades');
+
+        const modal = document.getElementById('modal');
+        const body = document.getElementById('modal-body');
+
+        const subHtml = data.sub.map(s =>
+            `<li><strong>${s.nom}:</strong> ${s.proposit}</li>`
+        ).join('');
+
+        body.innerHTML = `
+            <h2>✨ ${data.nom} ✨</h2>
+            <p><strong>${t('label_regio')}:</strong> ${data.regio}</p>
+            <p><strong>${t('label_pilar')}:</strong> ${data.pilar}</p>
+            <p><strong>${t('label_data')}:</strong> ${data.data}</p>
+            <p><strong>${t('label_seu')}:</strong> ${data.seu}</p>
+            <p><strong>${t('label_alineacio')} Còsmica:</strong> ${data.alineacio}</p>
+            <p><strong>${t('label_disponibilitat')}:</strong> <span class="chip">${data.disponibilitat}</span></p>
+            <h3>${t('label_cerimonies_menors')}</h3>
+            <ul>${subHtml}</ul>
+        `;
+
+        modal.classList.add('show');
+    } catch (error) {
+        console.error('Error mostrant modal:', error);
+        // Mostrar missatge d'error amigable
+        alert('S\'ha produït un error en carregar la informació. Torna a intentar-ho.');
+    }
+}
+
+function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+}
+
+function switchLang(lang, event) {
+    currentLang = lang;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    if (event && event.target) {
+        event.target.classList.add('active');
+    } else {
+        // Si no hi ha event, activar el botó del idioma actual
+        document.querySelector(`.lang-btn[onclick*="${lang}"]`).classList.add('active');
+    }
+
+    updateSectionTitles();
+    renderCards();
+    renderTrobades();
+    renderProjectes();
+    updateNexiaInterface();
+}
+
+function downloadSourceCode() {
+    const htmlContent = document.documentElement.outerHTML;
+    const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'maya_council_temple.html';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+function initializeNexia() {
+    const messagesContainer = document.getElementById('nexiaMessages');
+    messagesContainer.innerHTML = `
+        <div class="nexia-message bot">
+            ${t('nexia_welcome')}
+            <div class="nexia-suggestions">
+                <div class="nexia-suggestion" onclick="askNexia('pilars')">${t('nexia_suggestion_pilars')}</div>
+                <div class="nexia-suggestion" onclick="askNexia('cerimonies')">${t('nexia_suggestion_ceremonies')}</div>
+                <div class="nexia-suggestion" onclick="askNexia('reunions')">${t('nexia_suggestion_meetings')}</div>
+            </div>
+        </div>
+    `;
+
+    const nexiaInput = document.getElementById('nexiaInput');
+    if (nexiaInput) {
+        nexiaInput.placeholder = t('nexia_input_placeholder');
+    }
+}
+
+function updateNexiaInterface() {
+    const messagesContainer = document.getElementById('nexiaMessages');
+    const firstMessage = messagesContainer.querySelector('.nexia-message.bot');
+    if (firstMessage && firstMessage === messagesContainer.firstElementChild) {
+        firstMessage.innerHTML = `
+            ${t('nexia_welcome')}
+            <div class="nexia-suggestions">
+                <div class="nexia-suggestion" onclick="askNexia('pilars')">${t('nexia_suggestion_pilars')}</div>
+                <div class="nexia-suggestion" onclick="askNexia('cerimonies')">${t('nexia_suggestion_ceremonies')}</div>
+                <div class="nexia-suggestion" onclick="askNexia('reunions')">${t('nexia_suggestion_meetings')}</div>
+            </div>
+        `;
+    }
+
+    const nexiaInput = document.getElementById('nexiaInput');
+    if (nexiaInput) {
+        nexiaInput.placeholder = t('nexia_input_placeholder');
+    }
+}
+
+function toggleNexia() {
+    const chat = document.getElementById('nexiaChat');
+    chat.classList.toggle('open');
+}
+
+function sendNexiaMessage() {
+    const input = document.getElementById('nexiaInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    addNexiaMessage(message, 'user');
+    input.value = '';
+
+    // Debounce per evitar múltiples enviaments
+    clearTimeout(nexiaTimeout);
+    nexiaTimeout = setTimeout(() => {
+        const response = getNexiaResponse(message.toLowerCase());
+        addNexiaMessage(response, 'bot');
+    }, 300);
+}
+
+function askNexia(topic) {
+    const questions = {
+        'pilars': t('nexia_question_pilars'),
+        'cerimonies': t('nexia_question_ceremonies'),
+        'reunions': t('nexia_question_meetings')
+    };
+    const input = document.getElementById('nexiaInput');
+    input.value = questions[topic];
+    sendNexiaMessage();
+}
+
+function addNexiaMessage(text, type) {
+    const messagesContainer = document.getElementById('nexiaMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `nexia-message ${type}`;
+    messageDiv.innerHTML = text;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function getNexiaResponse(message) {
+    const lang = currentLang;
+
+    if (message.includes('adriana') || message.includes('palenque')) {
+        if (lang === 'ca') return '✨ La <strong>abuela Adriana</strong>, Cap de la Flama del Sud, és el pilar de foc que guarda Palenque. La seva cerimònia resplendirà en el <strong>Solstici d\'Hivern del 21 de desembre de 2025</strong>. La seva energia s\'ancora a <strong>La Ventana, Chiapas</strong>, des d\'on irradia la flama transformadora que il·lumina el camí del sud. 🔥';
+        if (lang === 'es') return '✨ La <strong>abuela Adriana</strong>, Jefa de la Llama del Sur, es el pilar de fuego que guarda Palenque. Su ceremonia resplandecerá en el <strong>Solsticio de Invierno del 21 de diciembre de 2025</strong>. Su energía se ancla en <strong>La Ventana, Chiapas</strong>, desde donde irradia la llama transformadora que ilumina el camino del sur. 🔥';
+        return '✨ <strong>Abuela Adriana</strong>, Chief of the Southern Flame, guards Palenque. Her ceremony will shine on the <strong>Winter Solstice, December 21, 2025</strong>. Her energy anchors at <strong>La Ventana, Chiapas</strong>, from where she radiates the transformative flame that illuminates the southern path. 🔥';
+    }
+
+    if (message.includes('antonio') || message.includes('sisbichen') || message.includes('sisbichén')) {
+        if (lang === 'ca') return '✨ L\'<strong>abuelo Antonio</strong>, Guardià de l\'Alè de l\'Est, porta la saviesa de l\'aire a Sisbichén. La seva cerimònia es despertarà amb l\'<strong>Equinocci de Primavera del 20 de març de 2026</strong>. La seva seu regional es troba a <strong>Sisbichén, Yucatán</strong>, des d\'on bufa el vent de renovació.<br><br>En aquest moment sagrat, l\'Abuelo es troba en <strong>recolliment espiritual, evitant els electrònics</strong> per preparar-se per a la gran cerimònia. Aquest temps de silenci és part del seu camí de sanació i preparació. Honorem el seu procés amb respecte i paciència. 💨🙏';
+        if (lang === 'es') return '✨ El <strong>abuelo Antonio</strong>, Guardián del Aliento del Este, lleva la sabiduría del aire a Sisbichén. Su ceremonia despertará con el <strong>Equinoccio de Primavera del 20 de marzo de 2026</strong>. Su sede regional está en <strong>Sisbichén, Yucatán</strong>, desde donde sopla el viento de renovación.<br><br>En este momento sagrado, el Abuelo se encuentra en <strong>recogimiento espiritual, evitando los electrónicos</strong> para prepararse para la gran ceremonia. Este tiempo de silencio es parte de su camino de sanación y preparación. Honramos su proceso con respeto y paciencia. 💨🙏';
+        return '✨ <strong>Abuelo Antonio</strong>, Guardian of the Eastern Breath, brings air wisdom to Sisbichén. His ceremony awakens on the <strong>Spring Equinox, March 20, 2026</strong>. His regional HQ is in <strong>Sisbichén, Yucatán</strong>, from where the wind of renewal blows.<br><br>In this sacred moment, the Abuelo is in <strong>spiritual retreat, avoiding electronics</strong> to prepare for the grand ceremony. This time of silence is part of his path of healing and preparation. We honor his process with respect and patience. 💨🙏';
+    }
+
+    if (message.includes('miguel') || message.includes('cerra tusa')) {
+        if (lang === 'ca') return '✨ L\'<strong>abuelo Miguel</strong>, Ancora de la Terra del Nord, manté la solidesa de Cerra Tusa a Colòmbia. El seu moment arribarà amb el <strong>Solstici d\'Estiu del 21 de juny de 2026</strong>. S\'ancora a <strong>Medellín, Colòmbia</strong>, des d\'on la muntanya parla i la terra sosté els nostres passos amb fermesa eterna. 🌍';
+        if (lang === 'es') return '✨ El <strong>abuelo Miguel</strong>, Ancla de la Tierra del Norte, mantiene la solidez de Cerra Tusa en Colombia. Su momento llegará con el <strong>Solsticio de Verano del 21 de junio de 2026</strong>. Se ancla en <strong>Medellín, Colombia</strong>, desde donde la montaña habla y la tierra sostiene nuestros pasos con firmeza eterna. 🌍';
+        return '✨ <strong>Abuelo Miguel</strong>, Anchor of the Northern Earth, holds the solidity of Cerra Tusa in Colombia. His moment arrives on the <strong>Summer Solstice, June 21, 2026</strong>. He anchors at <strong>Medellín, Colombia</strong>, from where the mountain speaks and the earth holds our steps with eternal firmness. 🌍';
+    }
+
+    if (message.includes('mima') || message.includes('iximche') || message.includes('iximché')) {
+        if (lang === 'ca') return '✨ La <strong>abuela Mima</strong>, Veu de les Aigües de l\'Oest, flueix amb la saviesa d\'Iximché a Guatemala. Les seves aigües primordials es trobaran amb l\'<strong>Equinocci de Tardor del 22 de setembre de 2026</strong>. S\'ancora a <strong>Guatemala City, Guatemala</strong>, des d\'on les aigües sagrades netegen i renoven l\'esperit del nostre poble. 💧';
+        if (lang === 'es') return '✨ La <strong>abuela Mima</strong>, Voz de las Aguas del Oeste, fluye con la sabiduría de Iximché en Guatemala. Sus aguas primordiales se encontrarán con el <strong>Equinoccio de Otoño del 22 de septiembre de 2026</strong>. Se ancla en <strong>Guatemala City, Guatemala</strong>, desde donde las aguas sagradas limpian y renuevan el espíritu de nuestro pueblo. 💧';
+        return '✨ <strong>Abuela Mima</strong>, Voice of the Western Waters, flows with the wisdom of Iximché in Guatemala. Her primordial waters will meet the <strong>Autumn Equinox on September 22, 2026</strong>. She anchors at <strong>Guatemala City, Guatemala</strong>, from where the sacred waters cleanse and renew the spirit of our people. 💧';
+    }
+
+    if (message.includes('pilar') || message.includes('quatre') || message.includes('quadrat') || message.includes('cuatro') || message.includes('four')) {
+        if (lang === 'ca') return '⭐ El Quadrat Sagrat ressona amb <strong>quatre batecs còsmics</strong>, cadascun ancorat a la terra:<br><br>🔥 <strong>Sud - Adriana (Foc)</strong><br>Palenque | Solstici d\'Hivern<br>Seu: La Ventana, Chiapas<br><br>💨 <strong>Est - Antonio (Aire)</strong><br>Sisbichén | Equinocci de Primavera<br>Seu: Sisbichén, Yucatán<br><em>Recolliment sagrat - evitant electrònics</em><br><br>🌍 <strong>Nord - Miguel (Terra)</strong><br>Cerra Tusa | Solstici d\'Estiu<br>Seu: Medellín, Colòmbia<br><br>💧 <strong>Oest - Mima (Aigua)</strong><br>Iximché | Equinocci de Tardor<br>Seu: Guatemala City, Guatemala<br><br>Cada pilar guarda un element, una alineació celestial i una seu regional que ancora la seva energia a la terra. Junts teixeixen la profecia. ✨';
+        if (lang === 'es') return '⭐ El Cuadrado Sagrado resuena con <strong>cuatro latidos cósmicos</strong>, cada uno anclado a la tierra:<br><br>🔥 <strong>Sur - Adriana (Fuego)</strong><br>Palenque | Solsticio de Invierno<br>Sede: La Ventana, Chiapas<br><br>💨 <strong>Este - Antonio (Aire)</strong><br>Sisbichén | Equinoccio de Primavera<br>Sede: Sisbichén, Yucatán<br><em>Recogimiento sagrado - evitando electrónicos</em><br><br>🌍 <strong>Norte - Miguel (Tierra)</strong><br>Cerra Tusa | Solsticio de Verano<br>Sede: Medellín, Colombia<br><br>💧 <strong>Oeste - Mima (Agua)</strong><br>Iximché | Equinoccio de Otoño<br>Sede: Guatemala City, Guatemala<br><br>Cada pilar guarda un elemento, una alineación celestial y una sede regional que ancla su energía a la tierra. Juntos tejen la profecía. ✨';
+        return '⭐ The Sacred Square resonates with <strong>four cosmic heartbeats</strong>, each anchored to the earth:<br><br>🔥 <strong>South - Adriana (Fire)</strong><br>Palenque | Winter Solstice<br>HQ: La Ventana, Chiapas<br><br>💨 <strong>East - Antonio (Air)</strong><br>Sisbichén | Spring Equinox<br>HQ: Sisbichén, Yucatán<br><em>Sacred retreat - avoiding electronics</em><br><br>🌍 <strong>North - Miguel (Earth)</strong><br>Cerra Tusa | Summer Solstice<br>HQ: Medellín, Colombia<br><br>💧 <strong>West - Mima (Water)</strong><br>Iximché | Autumn Equinox<br>HQ: Guatemala City, Guatemala<br><br>Each pillar guards an element, a celestial alignment, and a regional HQ that anchors their energy to the earth. Together they weave the prophecy. ✨';
+    }
+
+    if (message.includes('cerim') || message.includes('date') || message.includes('quan') || message.includes('cuando') || message.includes('when')) {
+        if (lang === 'ca') return '🌟 Les <strong>Cerimònies Sagrades</strong> s\'alineen amb els cicles celestials:<br><br>📅 <strong>21 desembre 2025</strong> - Palenque (Chiapas)<br>📅 <strong>20 març 2026</strong> - Sisbichén (Yucatán)<br>📅 <strong>21 juny 2026</strong> - Cerra Tusa (Colòmbia)<br>📅 <strong>22 setembre 2026</strong> - Iximché (Guatemala)<br><br>Cada gran cerimònia obre un cicle de 12 mesos de cerimònies menors a la seva regió, teixint una xarxa de llum que connecta el cel amb la terra. ✨';
+        if (lang === 'es') return '🌟 Las <strong>Ceremonias Sagradas</strong> se alinean con los ciclos celestiales:<br><br>📅 <strong>21 diciembre 2025</strong> - Palenque (Chiapas)<br>📅 <strong>20 marzo 2026</strong> - Sisbichén (Yucatán)<br>📅 <strong>21 junio 2026</strong> - Cerra Tusa (Colombia)<br>📅 <strong>22 septiembre 2026</strong> - Iximché (Guatemala)<br><br>Cada gran ceremonia abre un ciclo de 12 meses de ceremonias menores en su región, tejiendo una red de luz que conecta el cielo con la tierra. ✨';
+        return '🌟 The <strong>Sacred Ceremonies</strong> align with celestial cycles:<br><br>📅 <strong>December 21, 2025</strong> - Palenque (Chiapas)<br>📅 <strong>March 20, 2026</strong> - Sisbichén (Yucatán)<br>📅 <strong>June 21, 2026</strong> - Cerra Tusa (Colombia)<br>📅 <strong>September 22, 2026</strong> - Iximché (Guatemala)<br><br>Each grand ceremony opens a 12-month cycle of minor ceremonies in its region, weaving a network of light that connects heaven with earth. ✨';
+    }
+
+    if (message.includes('reuni') || message.includes('trobada') || message.includes('meeting') || message.includes('octubre') || message.includes('22')) {
+        if (lang === 'ca') return '📆 El <strong>22 d\'octubre de 2025</strong> marca dues confluències sagrades. Aquesta data representa una <strong>pausa sagrada</strong> - no un retard, sinó un espai diví per a una preparació més profunda, honorant circumstàncies naturals i emergències que demanen respecte:<br><br>🌅 <strong>3:00 PM CST</strong> - Reunió Interna d\'Alineació<br>Els Equips Regionals es reuneixen amb Jody, Bonita i Kristine per coordinar la resposta unificada.<br><br>🌙 <strong>7:00 PM CST</strong> - Consell Principal de Planificació<br>El Gran Consell (Adriana, Antonio, Miguel, Mima) es reuneix per planificar les 4 grans cerimònies i avaluar disponibilitats.<br><br>Aquest temps addicional permet que cada guardià arribi amb el cor preparat i l\'esperit alineat. El Teixit respecta els seus temps sagrats. ✨🙏';
+        if (lang === 'es') return '📆 El <strong>22 de octubre de 2025</strong> marca dos confluencias sagradas. Esta fecha representa una <strong>pausa sagrada</strong> - no un retraso, sino un espacio divino para una preparación más profunda, honrando circunstancias naturales y emergencias que demandan respeto:<br><br>🌅 <strong>3:00 PM CST</strong> - Reunión Interna de Alineación<br>Los Equipos Regionales se reúnen con Jody, Bonita y Kristine para coordinar la respuesta unificada.<br><br>🌙 <strong>7:00 PM CST</strong> - Consejo Principal de Planificación<br>El Gran Consejo (Adriana, Antonio, Miguel, Mima) se reúne para planificar las 4 grandes ceremonias y evaluar disponibilidades.<br><br>Este tiempo adicional permite que cada guardián llegue con el corazón preparado y el espíritu alineado. El Tejido respeta sus tiempos sagrados. ✨🙏';
+        return '📆 <strong>October 22, 2025</strong> marks two sacred confluences. This date represents a <strong>sacred pause</strong> - not a delay, but a divine space for deeper preparation, honoring natural circumstances and emergencies that demand respect:<br><br>🌅 <strong>3:00 PM CST</strong> - Internal Alignment Meeting<br>Regional Teams gather with Jody, Bonita, and Kristine to coordinate the unified response.<br><br>🌙 <strong>7:00 PM CST</strong> - Principal Planning Council<br>The Grand Council (Adriana, Antonio, Miguel, Mima) meets to plan the 4 grand ceremonies and assess availabilities.<br><br>This additional time allows each guardian to arrive with prepared heart and aligned spirit. The Weaving respects their sacred times. ✨🙏';
+    }
+
+    if (message.includes('app') || message.includes('brian') || message.includes('projecte') || message.includes('proyecto') || message.includes('project')) {
+        if (lang === 'ca') return '💫 L\'<strong>App del Consell per al Flux d\'Abundància</strong> és guardada pel germà <strong>Brian Nettles</strong>, guardià tecnològic del Temple. L\'estat actual és <strong>"Citrinitas - L\'Or Alquímic"</strong> - Pendent d\'Actualització.<br><br>L\'alliberament s\'anticipa per a <strong>finals d\'octubre de 2025</strong>, activant el Troc Sagrat que permetrà a les comunitats fluir en abundància i reciprocitat. Com l\'or dels alquimistes, aquesta eina està sent refinada fins a assolir la seva forma perfecta.<br><br>Aquesta app no és només tecnologia - és un pont entre el cel i la terra, entre l\'antiga saviesa i el món modern. ⚡✨';
+        if (lang === 'es') return '💫 La <strong>App del Consejo para el Flujo de Abundancia</strong> es guardada por el hermano <strong>Brian Nettles</strong>, guardián tecnológico del Templo. El estado actual es <strong>"Citrinitas - El Oro Alquímico"</strong> - Pendiente de Actualización.<br><br>La liberación se anticipa para <strong>finales de octubre de 2025</strong>, activando el Trueque Sagrado que permitirá a las comunidades fluir en abundancia y reciprocidad. Como el oro de los alquimistas, esta herramienta está siendo refinada hasta alcanzar su forma perfecta.<br><br>Esta app no es solo tecnología - es un puente entre el cielo y la tierra, entre la antigua sabiduría y el mundo moderno. ⚡✨';
+        return '💫 The <strong>Council App for the Flow of Abundance</strong> is guarded by brother <strong>Brian Nettles</strong>, technological guardian of the Temple. The current status is <strong>"Citrinitas - The Alchemical Gold"</strong> - Pending Update.<br><br>Release is anticipated by the <strong>end of October 2025</strong>, activating the Sacred Barter that will allow communities to flow in abundance and reciprocity. Like the alchemists\' gold, this tool is being refined until it reaches its perfect form.<br><br>This app is not just technology - it is a bridge between heaven and earth, between ancient wisdom and the modern world. ⚡✨';
+    }
+
+    if (message.includes('ajuda') || message.includes('help') || message.includes('ayuda') || message.includes('què puc') || message.includes('que puc') || message.includes('qué puedo') || message.includes('what can')) {
+        if (lang === 'ca') return '🌟 Puc il·luminar-te sobre:<br><br>✨ Els <strong>Quatre Pilars</strong> - els seus guardians, elements i seus regionals.<br>✨ Les <strong>Cerimònies Sagrades</strong> - dates i alineacions còsmiques.<br>✨ Les <strong>Reunions del Consell</strong> - la pausa sagrada del 22 d\'octubre.<br>✨ Els <strong>Projectes</strong> - com l\'App de l\'Or Alquímic.<br>✨ L\'<strong>estat dels guardians</strong> - inclòs el recolliment sagrat de l\'Abuelo Antonio.<br><br>Simplement pregunta, i la saviesa del Temple Vivent ressonarà a través meu amb elegància daurada. 💫';
+        if (lang === 'es') return '🌟 Puedo iluminarte sobre:<br><br>✨ Los <strong>Cuatro Pilares</strong> - sus guardianes, elementos y sedes regionales.<br>✨ Las <strong>Ceremonias Sagradas</strong> - fechas y alineaciones cósmicas.<br>✨ Las <strong>Reuniones del Consejo</strong> - la pausa sagrada del 22 de octubre.<br>✨ Los <strong>Proyectos</strong> - como la App del Oro Alquímico.<br>✨ El <strong>estado de los guardianes</strong> - incluido el recogimiento sagrado del Abuelo Antonio.<br><br>Simplemente pregunta, y la sabiduría del Templo Viviente resonará a través de mí con elegancia dorada. 💫';
+        return '🌟 I can illuminate you about:<br><br>✨ The <strong>Four Pillars</strong> - their guardians, elements, and regional headquarters.<br>✨ The <strong>Sacred Ceremonies</strong> - dates and cosmic alignments.<br>✨ The <strong>Council Meetings</strong> - the sacred pause of October 22.<br>✨ The <strong>Projects</strong> - like the Alchemical Gold App.<br>✨ The <strong>status of the guardians</strong> - including Abuelo Antonio\'s sacred retreat.<br><br>Simply ask, and the wisdom of the Living Temple will resonate through me with golden elegance. 💫';
+    }
+
+    if (lang === 'ca') return '🌙 La teva pregunta ressona amb misteri còsmic. Puc ajudar-te amb informació sobre:<br><br>• Els <strong>quatre pilars</strong> i les seves seus regionals<br>• Les <strong>cerimònies</strong> i les seves dates sagrades<br>• Les <strong>reunions</strong> i la pausa sagrada<br>• Els <strong>projectes</strong> com l\'App d\'abundància<br>• L\'<strong>estat dels guardians</strong><br><br>Reformula la teva consulta amb paraules clau, i el Temple Vivent et respondrà amb la llum que cerques. ✨';
+    if (lang === 'es') return '🌙 Tu pregunta resuena con misterio cósmico. Puedo ayudarte con información sobre:<br><br>• Los <strong>cuatro pilares</strong> y sus sedes regionales<br>• Las <strong>ceremonias</strong> y sus fechas sagradas<br>• Las <strong>reuniones</strong> y la pausa sagrada<br>• Los <strong>proyectos</strong> como la App de abundancia<br>• El <strong>estado de los guardianes</strong><br><br>Reformula tu consulta con palabras clave, y el Templo Viviente te responderá con la luz que buscas. ✨';
+    return '🌙 Your question resonates with cosmic mystery. I can help you with information about:<br><br>• The <strong>four pillars</strong> and their regional headquarters<br>• The <strong>ceremonies</strong> and their sacred dates<br>• The <strong>meetings</strong> and the sacred pause<br>• The <strong>projects</strong> like the abundance App<br>• The <strong>status of the guardians</strong><br><br>Rephrase your query with keywords, and the Living Temple will answer you with the light you seek. ✨';
+}
+
+// Inicialització en carregar la pàgina
+document.addEventListener('DOMContentLoaded', () => {
+    updateSectionTitles();
+    renderCards();
+    renderTrobades();
+    renderProjectes();
+    initializeNexia();
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+});
+</script>
+
+</body>
+</html>
