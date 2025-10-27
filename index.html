@@ -249,6 +249,25 @@
 
     </main>
 
+    <!-- Nexia - Assistent Virtual -->
+    <button class="floating-button nexia-button" onclick="toggleNexia()" aria-label="Obrir assistent virtual Nexia">✨</button>
+    <div class="nexia-chat" id="nexiaChat">
+        <div class="nexia-header">
+            <div>
+                <h3>✨ NEXia</h3>
+                <p>Guardiana del Quetzal</p>
+            </div>
+            <button class="nexia-close" onclick="toggleNexia()" aria-label="Tancar xat">✕</button>
+        </div>
+        <div class="nexia-messages" id="nexiaMessages"></div>
+        <div class="nexia-input-area">
+            <input type="text" class="nexia-input" id="nexiaInput" onkeypress="if(event.key==='Enter') sendNexiaMessage()" placeholder="Pregunta a NEXia...">
+            <button class="nexia-send" onclick="sendNexiaMessage()" aria-label="Enviar missatge">
+                <span aria-hidden="true">➤</span>
+            </button>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 
 </body>
