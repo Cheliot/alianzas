@@ -1,15 +1,16 @@
 # NEXia - Assistent Virtual del Quetzal 🤖✨
 
-NEXia és un assistent virtual intel·ligent integrat a la pàgina de coordinació del Encuentro del Quetzal, powered by Claude AI.
+NEXia és un assistent virtual intel·ligent integrat a la pàgina de coordinació del Encuentro del Quetzal, powered by DeepSeek AI.
 
 ## ✨ Característiques
 
-- **Respostes Intel·ligents**: Usa Claude 3.5 Sonnet per respondre preguntes sobre la reunió
+- **Respostes Intel·ligents**: Usa DeepSeek Chat per respondre preguntes sobre la reunió
 - **Context Complet**: Té accés a tota la informació del document
 - **Multiidioma**: Respon en català, castellà o anglès
-- **Historial de Conversa**: Manté el context de fins a 10 missatges
+- **Historial de Conversa**: Manté el context de fins a 20 missatges
 - **Interfície Elegant**: Disseny adaptat als colors del Quetzal
 - **✅ Seguretat**: API key guardada localment, NO al repositori
+- **💰 Econòmic**: DeepSeek és molt més barat que altres models
 
 ## 🎯 Què pot fer NEXia?
 
@@ -41,9 +42,9 @@ NEXia usa un **sistema segur de configuració** que:
 **Primera Vegada:**
 1. Obre `index.html` al navegador
 2. Fes clic al botó ✨ (NEXia)
-3. Se't demanarà l'API key d'Anthropic
-4. Obté-la a: https://console.anthropic.com/settings/keys
-5. Enganxa-la al prompt
+3. Se't demanarà l'API key de DeepSeek
+4. Obté-la a: https://platform.deepseek.com/api_keys
+5. Enganxa-la al prompt (comença amb `sk-`)
 6. La clau es guardarà localment
 
 **Per Canviar/Esborrar la Clau:**
@@ -51,6 +52,8 @@ NEXia usa un **sistema segur de configuració** que:
 2. Fes clic al botó ⚙️ (configuració)
 3. Confirma que vols esborrar la clau
 4. La propera vegada se't demanarà de nou
+
+**Important**: Pots usar la mateixa API key en múltiples navegadors, només has d'introduir-la una vegada en cada un.
 
 ### 🛡️ Per a Producció (Recomanat)
 
@@ -128,21 +131,29 @@ Si has de mantenir l'API key al client temporalment:
 
 ## 📊 Costos Estimats
 
-Claude 3.5 Sonnet costa aproximadament:
-- **Input**: $3 per milió de tokens (~750.000 paraules)
-- **Output**: $15 per milió de tokens (~750.000 paraules)
+DeepSeek Chat és **molt més econòmic** que altres models:
+- **Input**: $0.14 per milió de tokens (~750.000 paraules)
+- **Output**: $0.28 per milió de tokens (~750.000 paraules)
 
-Una conversa típica amb NEXia (10 missatges):
-- ~0.001$ - 0.01$ per conversa
+Una conversa típica amb NEXia (20 missatges):
+- ~$0.0001 - $0.001 per conversa (aproximadament **10-50 vegades més barat** que Claude!)
 
-**Important**: Monitoritza l'ús a la consola d'Anthropic!
+**Avantatges de DeepSeek**:
+- 💰 **Molt econòmic** (~95% més barat que GPT-4)
+- ⚡ **Ràpid** en generar respostes
+- 🌍 **Multiidioma** excel·lent (català, castellà, anglès)
+- 🎯 **Bones respostes** per a tasques generals
+
+**Important**: Monitoritza l'ús a la plataforma DeepSeek: https://platform.deepseek.com/usage
 
 ## 🔧 Configuració Tècnica
 
-- **Model**: claude-3-5-sonnet-20241022
+- **Model**: deepseek-chat
+- **API**: DeepSeek Platform (compatible OpenAI)
 - **Max Tokens**: 500 per resposta
-- **Context**: Informació completa del document
-- **Historial**: Últims 10 missatges
+- **Temperature**: 0.7 (equilibri entre creativitat i precisió)
+- **Context**: Informació completa del document (system prompt)
+- **Historial**: Últims 20 missatges (10 parells user/assistant)
 
 ## 📝 Notes
 
@@ -161,5 +172,6 @@ Una conversa típica amb NEXia (10 missatges):
 ---
 
 **Data d'integració**: Octubre 2025
-**Powered by**: Claude AI (Anthropic)
+**Powered by**: DeepSeek AI
 **Desenvolupat per**: Claude Code
+**API Key d'Alba**: Configurada localment per seguretat

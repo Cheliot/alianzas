@@ -56,10 +56,10 @@ document.querySelectorAll('.back-to-top').forEach(button => {
     });
 });
 
-// NEXia - Assistent Virtual amb Claude API
+// NEXia - Assistent Virtual amb DeepSeek API
 // ⚠️ IMPORTANT: L'API key NO està al codi per seguretat
 // L'usuari ha de configurar-la la primera vegada que usa NEXia
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 let nexiaTimeout;
 let conversationHistory = [];
@@ -70,17 +70,17 @@ function getAPIKey() {
 
     if (!apiKey) {
         apiKey = prompt(
-            '🔑 NEXia necessita la teva API key d\'Anthropic per funcionar.\n\n' +
-            'Obtén-la a: https://console.anthropic.com/settings/keys\n\n' +
+            '🔑 NEXia necessita l\'API key de DeepSeek per funcionar.\n\n' +
+            'Obtén-la a: https://platform.deepseek.com/api_keys\n\n' +
             'La clau es guardarà localment al teu navegador (localStorage).\n\n' +
             'Enganxa la teva API key:'
         );
 
-        if (apiKey && apiKey.trim().startsWith('sk-ant-')) {
+        if (apiKey && apiKey.trim().startsWith('sk-')) {
             localStorage.setItem('nexia_api_key', apiKey.trim());
             alert('✅ API key guardada! NEXia ja està llesta per ajudar-te.');
         } else if (apiKey) {
-            alert('❌ API key invàlida. Ha de començar amb "sk-ant-"');
+            alert('❌ API key invàlida. Ha de començar amb "sk-"');
             return null;
         }
     }
@@ -204,17 +204,18 @@ async function sendNexiaMessage() {
     const loadingId = addNexiaMessage('✨ Pensant...', 'bot');
 
     try {
-        const response = await callClaudeAPI(message);
+        const response = await callDeepSeekAPI(message);
         removeNexiaMessage(loadingId);
         addNexiaMessage(response, 'bot');
     } catch (error) {
         removeNexiaMessage(loadingId);
         console.error('Error NEXia:', error);
-        addNexiaMessage('❌ Ho sento, he tingut un problema tècnic. Torna-ho a provar en un moment.', 'bot');
+        const errorMsg = error.message || 'Ho sento, he tingut un problema tècnic. Torna-ho a provar en un moment.';
+        addNexiaMessage(`❌ ${errorMsg}`, 'bot');
     }
 }
 
-async function callClaudeAPI(userMessage) {
+async function callDeepSeekAPI(userMessage) {
     // Obtenir API key (demanarà a l'usuari si no està guardada)
     const apiKey = getAPIKey();
     if (!apiKey) {
@@ -227,23 +228,32 @@ async function callClaudeAPI(userMessage) {
         content: userMessage
     });
 
-    // Limitar historial a últims 10 missatges
-    if (conversationHistory.length > 10) {
-        conversationHistory = conversationHistory.slice(-10);
+    // Limitar historial a últims 10 missatges (parells user/assistant)
+    if (conversationHistory.length > 20) {
+        conversationHistory = conversationHistory.slice(-20);
     }
 
-    const response = await fetch(ANTHROPIC_API_URL, {
+    // Preparar missatges amb system prompt al principi
+    const messages = [
+        {
+            role: 'system',
+            content: documentContext
+        },
+        ...conversationHistory
+    ];
+
+    const response = await fetch(DEEPSEEK_API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'x-api-key': apiKey,
-            'anthropic-version': '2023-06-01'
+            'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: 'claude-3-5-sonnet-20241022',
+            model: 'deepseek-chat',
+            messages: messages,
             max_tokens: 500,
-            system: documentContext,
-            messages: conversationHistory
+            temperature: 0.7,
+            stream: false
         })
     });
 
@@ -261,7 +271,7 @@ async function callClaudeAPI(userMessage) {
     }
 
     const data = await response.json();
-    const assistantMessage = data.content[0].text;
+    const assistantMessage = data.choices[0].message.content;
 
     // Afegir resposta a l'historial
     conversationHistory.push({
