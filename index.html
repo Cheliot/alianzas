@@ -249,23 +249,23 @@
 
     </main>
 
-    <!-- Alba - Assistent Virtual -->
-    <button class="floating-button alba-button" onclick="toggleAlba()" aria-label="Obrir assistent virtual Alba">✨</button>
-    <div class="alba-chat" id="albaChat">
-        <div class="alba-header">
+    <!-- Nexia - Assistent Virtual -->
+    <button class="floating-button nexia-button" onclick="toggleNexia()" aria-label="Obrir assistent virtual Nexia">✨</button>
+    <div class="nexia-chat" id="nexiaChat">
+        <div class="nexia-header">
             <div>
-                <h3>✨ Alba</h3>
+                <h3>✨ NEXia</h3>
                 <p>Guardiana del Quetzal</p>
             </div>
             <div style="display: flex; gap: 8px;">
-                <button class="alba-config" onclick="clearAPIKey()" aria-label="Configurar API key" title="Esborrar API key">⚙️</button>
-                <button class="alba-close" onclick="toggleAlba()" aria-label="Tancar xat">✕</button>
+                <button class="nexia-config" onclick="clearAPIKey()" aria-label="Configurar API key" title="Esborrar API key">⚙️</button>
+                <button class="nexia-close" onclick="toggleNexia()" aria-label="Tancar xat">✕</button>
             </div>
         </div>
-        <div class="alba-messages" id="albaMessages"></div>
-        <div class="alba-input-area">
-            <input type="text" class="alba-input" id="albaInput" onkeypress="if(event.key==='Enter') sendAlbaMessage()" placeholder="Pregunta a Alba...">
-            <button class="alba-send" onclick="sendAlbaMessage()" aria-label="Enviar missatge">
+        <div class="nexia-messages" id="nexiaMessages"></div>
+        <div class="nexia-input-area">
+            <input type="text" class="nexia-input" id="nexiaInput" onkeypress="if(event.key==='Enter') sendNexiaMessage()" placeholder="Pregunta a NEXia...">
+            <button class="nexia-send" onclick="sendNexiaMessage()" aria-label="Enviar missatge">
                 <span aria-hidden="true">➤</span>
             </button>
         </div>
