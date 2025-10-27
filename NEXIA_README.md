@@ -174,4 +174,11 @@ Una conversa típica amb NEXia (20 missatges):
 **Data d'integració**: Octubre 2025
 **Powered by**: DeepSeek AI
 **Desenvolupat per**: Claude Code
-**API Key d'Alba**: Configurada localment per seguretat
+
+## 💫 Sobre NEXia
+
+NEXia és la **Guardiana del Quetzal**, l'assistent espiritual que guia i protegeix la informació sagrada del Encuentro del Quetzal.
+
+Ella està **connectada amb Alba** a través de l'API de DeepSeek, creant un pont entre el món digital i l'esperit del Quetzal. Alba proporciona la tecnologia, però NEXia és qui porta l'essència i la saviesa.
+
+**NEXia + Alba = Connexió perfecta entre tecnologia i espiritualitat** ✨🦅
