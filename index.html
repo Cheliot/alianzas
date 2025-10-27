@@ -257,7 +257,10 @@
                 <h3>✨ NEXia</h3>
                 <p>Guardiana del Quetzal</p>
             </div>
-            <button class="nexia-close" onclick="toggleNexia()" aria-label="Tancar xat">✕</button>
+            <div style="display: flex; gap: 8px;">
+                <button class="nexia-config" onclick="clearAPIKey()" aria-label="Configurar API key" title="Esborrar API key">⚙️</button>
+                <button class="nexia-close" onclick="toggleNexia()" aria-label="Tancar xat">✕</button>
+            </div>
         </div>
         <div class="nexia-messages" id="nexiaMessages"></div>
         <div class="nexia-input-area">

@@ -818,6 +818,7 @@ footer::before {
     font-size: 0.75rem;
 }
 
+.nexia-config,
 .nexia-close {
     width: 28px;
     height: 28px;
@@ -826,12 +827,16 @@ footer::before {
     border: none;
     cursor: pointer;
     color: var(--color-accent);
-    font-size: 18px;
+    font-size: 16px;
     transition: all 0.2s;
 }
 
+.nexia-config:hover,
 .nexia-close:hover {
     background: rgba(74, 147, 122, 0.3);
+}
+
+.nexia-close:hover {
     transform: rotate(90deg);
 }
 

@@ -56,11 +56,119 @@ document.querySelectorAll('.back-to-top').forEach(button => {
     });
 });
 
-// NEXia - Assistent Virtual
+// NEXia - Assistent Virtual amb Claude API
+// ⚠️ IMPORTANT: L'API key NO està al codi per seguretat
+// L'usuari ha de configurar-la la primera vegada que usa NEXia
+const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+
 let nexiaTimeout;
+let conversationHistory = [];
+
+// Gestió segura de l'API key (localStorage)
+function getAPIKey() {
+    let apiKey = localStorage.getItem('nexia_api_key');
+
+    if (!apiKey) {
+        apiKey = prompt(
+            '🔑 NEXia necessita la teva API key d\'Anthropic per funcionar.\n\n' +
+            'Obtén-la a: https://console.anthropic.com/settings/keys\n\n' +
+            'La clau es guardarà localment al teu navegador (localStorage).\n\n' +
+            'Enganxa la teva API key:'
+        );
+
+        if (apiKey && apiKey.trim().startsWith('sk-ant-')) {
+            localStorage.setItem('nexia_api_key', apiKey.trim());
+            alert('✅ API key guardada! NEXia ja està llesta per ajudar-te.');
+        } else if (apiKey) {
+            alert('❌ API key invàlida. Ha de començar amb "sk-ant-"');
+            return null;
+        }
+    }
+
+    return apiKey;
+}
+
+function clearAPIKey() {
+    if (confirm('Vols esborrar l\'API key guardada?')) {
+        localStorage.removeItem('nexia_api_key');
+        alert('✅ API key esborrada. Se\'t demanarà de nou la propera vegada.');
+    }
+}
+
+// Context del document per a NEXia
+const documentContext = `
+Ets NEXia, la Guardiana del Quetzal, un assistent virtual especialitzat en informació sobre el Encuentro del Quetzal.
+
+INFORMACIÓ CLAU:
+
+PROPERA REUNIÓ DE COORDINACIÓ:
+- Data: Miércoles, 29 de octubre de 2025
+- Hora: 2:00 PM (Hora CDMX)
+- Estat: Confirmada
+
+ASSISTÈNCIA:
+Confirmats:
+- Nana Mima
+- Adriana Alvarez
+- Cecilia Pagkalinawan
+- Rodrigo Martínez Romero
+
+Pendents de resposta:
+- Kate Kaur | Conexión Dharma
+- Ab Antonio Oxté León
+- Abuelo Antonio
+- CARMEN XUTUYMA
+- Dr Miguel Ceballos
+- Nahii
+- Silvio
+- Neto Lubcke (Regresa a Mérida el 26/Oct)
+
+AGENDA (29 Oct):
+1. Analitzar la Carta del Abuelo Chief Phil
+   - Seleccionar 16 delegats (8 homes, 8 dones)
+   - Confirmar cronograma: gener/febrer 2026
+   - Alinear equip de coordinació
+
+2. Nuestra Conexión con el Terreno (Ideas de Neto)
+   - Revisar sostenibilitat, economia i logística local
+
+3. Punts Adicionals
+   - Coordinar espai per Nana Mima i abuelo Antonio
+
+OBJECTIU GENERAL:
+Preparar el "Encuentro del Quetzal" a Sisbichén (gener/febrer 2026) on es seleccionaran 16 delegats (8 dones, 8 homes) mitjançant processos no partidistes per representar la biorregió (Mèxic, Centreamèrica, Panamà) a la Quarta Reunió de la Unió al Canadà (març/abril 2026).
+
+COORDINADORS:
+- Abuelo Antonio (amfitrió a Sisbichén)
+- Adriana Alvarez
+- Nana Mima
+- CONODEPOA
+
+UBICACIÓ:
+Sisbichén, Yucatán, México - Terres de l'abuelo Antonio
+
+DOCUMENTOS:
+- Carta del Abuelo Chief Phil (disponible)
+- Propuesta de Neto (disponible)
+- Lista de invitados (per completar)
+- Presupuesto preliminar (per elaborar)
+
+DATES CLAU:
+- 29 octubre 2025: Reunió de coordinació
+- Gener/Febrer 2026: Encuentro del Quetzal a Sisbichén
+- 18-22 març o 18-22 abril 2026: Reunió Final al Canadà (BC)
+
+INSTRUCCIONS:
+- Respon en català, castellà o anglès segons la pregunta
+- Sigues concisa però informativa
+- Usa emojis amb moderació
+- Si no tens informació específica, suggereix revisar els documents
+- Sigues respectuosa amb els guardians i el procés sagrat
+`;
 
 function initializeNexia() {
     const messagesContainer = document.getElementById('nexiaMessages');
+    conversationHistory = []; // Reset conversation
     messagesContainer.innerHTML = `
         <div class="nexia-message bot">
             Benvingut! ✨ Sóc NEXia, Guardiana del Quetzal. Estic aquí per ajudar-te amb informació sobre el Encuentro del Quetzal i la coordinació de la reunió. Com et puc ajudar?
@@ -84,7 +192,7 @@ function toggleNexia() {
     chat.classList.toggle('open');
 }
 
-function sendNexiaMessage() {
+async function sendNexiaMessage() {
     const input = document.getElementById('nexiaInput');
     const message = input.value.trim();
     if (!message) return;
@@ -92,11 +200,76 @@ function sendNexiaMessage() {
     addNexiaMessage(message, 'user');
     input.value = '';
 
-    clearTimeout(nexiaTimeout);
-    nexiaTimeout = setTimeout(() => {
-        const response = getNexiaResponse(message.toLowerCase());
+    // Mostrar indicador de càrrega
+    const loadingId = addNexiaMessage('✨ Pensant...', 'bot');
+
+    try {
+        const response = await callClaudeAPI(message);
+        removeNexiaMessage(loadingId);
         addNexiaMessage(response, 'bot');
-    }, 300);
+    } catch (error) {
+        removeNexiaMessage(loadingId);
+        console.error('Error NEXia:', error);
+        addNexiaMessage('❌ Ho sento, he tingut un problema tècnic. Torna-ho a provar en un moment.', 'bot');
+    }
+}
+
+async function callClaudeAPI(userMessage) {
+    // Obtenir API key (demanarà a l'usuari si no està guardada)
+    const apiKey = getAPIKey();
+    if (!apiKey) {
+        throw new Error('API key no configurada');
+    }
+
+    // Afegir missatge a l'historial
+    conversationHistory.push({
+        role: 'user',
+        content: userMessage
+    });
+
+    // Limitar historial a últims 10 missatges
+    if (conversationHistory.length > 10) {
+        conversationHistory = conversationHistory.slice(-10);
+    }
+
+    const response = await fetch(ANTHROPIC_API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+            model: 'claude-3-5-sonnet-20241022',
+            max_tokens: 500,
+            system: documentContext,
+            messages: conversationHistory
+        })
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API Error:', errorData);
+
+        // Si l'error és d'autenticació, esborrar la clau guardada
+        if (response.status === 401) {
+            localStorage.removeItem('nexia_api_key');
+            throw new Error('API key invàlida. Torna-ho a provar.');
+        }
+
+        throw new Error(`API Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const assistantMessage = data.content[0].text;
+
+    // Afegir resposta a l'historial
+    conversationHistory.push({
+        role: 'assistant',
+        content: assistantMessage
+    });
+
+    return assistantMessage;
 }
 
 function askNexia(topic) {
@@ -113,60 +286,20 @@ function askNexia(topic) {
 function addNexiaMessage(text, type) {
     const messagesContainer = document.getElementById('nexiaMessages');
     const messageDiv = document.createElement('div');
+    const messageId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    messageDiv.id = messageId;
     messageDiv.className = `nexia-message ${type}`;
     messageDiv.innerHTML = text;
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    return messageId;
 }
 
-function getNexiaResponse(message) {
-    // Respuestas sobre la reunión
-    if (message.includes('reuni') || message.includes('quan') || message.includes('cuando') || message.includes('fecha') || message.includes('29')) {
-        return '📅 La propera reunió de coordinació està <strong>confirmada</strong> per al:<br><br><strong>Miércoles, 29 de octubre de 2025</strong><br>⏰ Hora: <strong>2:00 PM (Hora CDMX)</strong><br><br>És una reunió clau per coordinar el Encuentro del Quetzal que tindrà lloc a <strong>gener o principis de febrer de 2026</strong> a Sisbichén. ✨';
+function removeNexiaMessage(messageId) {
+    const messageDiv = document.getElementById(messageId);
+    if (messageDiv) {
+        messageDiv.remove();
     }
-
-    // Respuestas sobre delegados
-    if (message.includes('delegat') || message.includes('representant') || message.includes('16') || message.includes('quants') || message.includes('cuantos')) {
-        return '👥 Segons la carta del Abuelo Chief Phil, a la Reunió del Quetzal es seleccionaran:<br><br><strong>16 delegats</strong> (8 homes i 8 dones)<br><br>Aquests delegats representaran la biorregió (Mèxic, Centreamèrica i Panamà) a la Quarta Reunió de la Unió al Canadà en març/abril de 2026.<br><br>El procés de selecció serà <strong>no partidista i no polític</strong>, garantint igualtat i equilibri de gènere. 🌟';
-    }
-
-    // Respuestas sobre asistencia
-    if (message.includes('assist') || message.includes('confirmat') || message.includes('qui ve') || message.includes('quien viene')) {
-        return '✅ <strong>Confirmats:</strong><br>• Nana Mima<br>• Adriana Alvarez<br>• Cecilia Pagkalinawan<br>• Rodrigo Martínez Romero<br><br>⏳ <strong>Pendent de resposta:</strong><br>• Kate Kaur | Conexión Dharma<br>• Ab Antonio Oxté León<br>• Abuelo Antonio<br>• CARMEN XUTUYMA<br>• Dr Miguel Ceballos<br>• Nahii<br>• Silvio<br>• Neto Lubcke (Regresa a Mérida el 26/Oct)';
-    }
-
-    // Respuestas sobre la carta
-    if (message.includes('carta') || message.includes('chief phil') || message.includes('phil') || message.includes('letter')) {
-        return '📜 La <strong>Carta del Abuelo Chief Phil</strong> és el document base amb la visió i propòsit central del Encuentro del Quetzal.<br><br><strong>Punts clau:</strong><br>• Selecció de 16 delegats (8 homes, 8 dones)<br>• Reunió a Sisbichén (gener/febrer 2026)<br>• Coordinat per: abuelo Antonio, Adriana, Nana Mima, CONODEPOA<br>• La Reunió Final al Canadà serà entre el 18-22 de març o 18-22 d\'abril de 2026<br><br>Pots llegir la carta completa a la secció de Documentos de la pàgina. 📖✨';
-    }
-
-    // Respuestas sobre agenda
-    if (message.includes('agenda') || message.includes('temes') || message.includes('punts') || message.includes('qué se tratará')) {
-        return '📋 <strong>Agenda per a la Reunió del 29/Oct:</strong><br><br><strong>1. Analizar la Carta del Abuelo Chief Phil</strong><br>• Seleccionar 16 delegats<br>• Confirmar cronograma (gener/febrer 2026)<br>• Alinear equip de coordinació<br><br><strong>2. Nuestra Conexión con el Terreno</strong><br>• Revisar idees de Neto sobre sostenibilitat<br><br><strong>3. Puntos Adicionales</strong><br>• Coordinar espai per Nana Mima i abuelo Antonio';
-    }
-
-    // Respuestas sobre ubicación
-    if (message.includes('on') || message.includes('lloc') || message.includes('lugar') || message.includes('sisbich') || message.includes('donde')) {
-        return '📍 <strong>Ubicació:</strong><br><br>La Reunió del Quetzal tindrà lloc a:<br><strong>Sisbichén, Yucatán, Mèxic</strong><br><br>És la terra de l\'abuelo Antonio, on es va celebrar l\'última reunió en un entorn molt bonic. Aquest lloc sagrat acollirà la trobada de gener o principis de febrer de 2026. 🌿';
-    }
-
-    // Respuestas sobre coordinadores
-    if (message.includes('coordina') || message.includes('responsable') || message.includes('antonio') || message.includes('adriana') || message.includes('mima')) {
-        return '👤 <strong>Equip de Coordinació:</strong><br><br>La Reunió del Quetzal serà coordinada per:<br>• <strong>Abuelo Antonio</strong> (amfitrió a Sisbichén)<br>• <strong>Adriana</strong><br>• <strong>Nana Mima</strong><br>• <strong>CONODEPOA</strong><br><br>I altres persones que decideixin convidar. Representen tot Mèxic, Centreamèrica i Panamà. 🙏';
-    }
-
-    // Respuestas sobre viaje/rutas
-    if (message.includes('viatj') || message.includes('volar') || message.includes('vuelo') || message.includes('canad') || message.includes('bc')) {
-        return '✈️ La carta del Chief Phil detalla <strong>rutes de viatge que eviten Estats Units</strong> per arribar al Canadà:<br><br><strong>Opció 1:</strong> Vols directes Mèxic → Vancouver<br>• Des de CDMX, Cancún, Guadalajara, etc.<br><br><strong>Opció 2:</strong> Llatinoamèrica → Toronto → Vancouver<br>• Des de Bogotà, Lima, etc.<br><br>Això permet viatjar directament al Canadà sense passar pels EUA. 🌎';
-    }
-
-    // Respuestas sobre ayuda general
-    if (message.includes('ajuda') || message.includes('help') || message.includes('ayuda') || message.includes('què pots') || message.includes('que puedes')) {
-        return '💫 Puc ajudar-te amb informació sobre:<br><br>✨ <strong>La propera reunió</strong> (data, hora, lloc)<br>✨ <strong>Delegats</strong> a seleccionar<br>✨ <strong>Assistència</strong> (confirmats i pendents)<br>✨ <strong>Agenda</strong> de la reunió<br>✨ <strong>Carta del Chief Phil</strong><br>✨ <strong>Coordinadors</strong> de l\'esdeveniment<br>✨ <strong>Viatges</strong> i rutes<br><br>Què vols saber? 🌟';
-    }
-
-    // Respuesta por defecto
-    return '🌙 Gràcies per la teva pregunta. Puc ajudar-te amb informació sobre:<br><br>• La <strong>reunió del 29 d\'octubre</strong><br>• Els <strong>16 delegats</strong> a seleccionar<br>• L\'<strong>assistència</strong> confirmada<br>• L\'<strong>agenda</strong> de la reunió<br>• La <strong>Carta del Chief Phil</strong><br><br>Reformula la teva consulta o fes clic en els suggeriments! ✨';
 }
 
 // Inicializar NEXia cuando se carga la página
