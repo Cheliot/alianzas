@@ -1,6 +1,6 @@
-# NEXia - Assistent Virtual del Quetzal 🤖✨
+# Alba - Assistent Virtual del Quetzal 🤖✨
 
-NEXia és un assistent virtual intel·ligent integrat a la pàgina de coordinació del Encuentro del Quetzal, powered by DeepSeek AI.
+Alba és un assistent virtual intel·ligent integrat a la pàgina de coordinació del Encuentro del Quetzal, powered by DeepSeek AI.
 
 ## ✨ Característiques
 
@@ -12,9 +12,9 @@ NEXia és un assistent virtual intel·ligent integrat a la pàgina de coordinaci
 - **✅ Seguretat**: API key guardada localment, NO al repositori
 - **💰 Econòmic**: DeepSeek és molt més barat que altres models
 
-## 🎯 Què pot fer NEXia?
+## 🎯 Què pot fer Alba?
 
-NEXia pot ajudar amb informació sobre:
+Alba pot ajudar amb informació sobre:
 
 - 📅 La reunió del 29 d'octubre (data, hora, estat)
 - 👥 Els 16 delegats a seleccionar
@@ -30,25 +30,25 @@ NEXia pot ajudar amb informació sobre:
 
 ### ✅ Sistema Implementat
 
-NEXia usa un **sistema segur de configuració** que:
+Alba usa un **sistema segur de configuració** que:
 - ✅ NO guarda l'API key al codi font
 - ✅ NO puja l'API key al repositori GitHub
 - ✅ Demana l'API key a l'usuari la primera vegada
 - ✅ Guarda la clau localment al navegador (localStorage)
 - ✅ Permet esborrar/canviar la clau fàcilment
 
-### 📝 Com Configurar NEXia
+### 📝 Com Configurar Alba
 
 **Primera Vegada:**
 1. Obre `index.html` al navegador
-2. Fes clic al botó ✨ (NEXia)
+2. Fes clic al botó ✨ (Alba)
 3. Se't demanarà l'API key de DeepSeek
 4. Obté-la a: https://platform.deepseek.com/api_keys
 5. Enganxa-la al prompt (comença amb `sk-`)
 6. La clau es guardarà localment
 
 **Per Canviar/Esborrar la Clau:**
-1. Obre NEXia
+1. Obre Alba
 2. Fes clic al botó ⚙️ (configuració)
 3. Confirma que vols esborrar la clau
 4. La propera vegada se't demanarà de nou
@@ -127,7 +127,7 @@ Si has de mantenir l'API key al client temporalment:
 1. Obre `index.html` al navegador
 2. Fes clic al botó ✨ a la part inferior dreta
 3. Escriu la teva pregunta
-4. NEXia respondrà amb informació contextual
+4. Alba respondrà amb informació contextual
 
 ## 📊 Costos Estimats
 
@@ -135,7 +135,7 @@ DeepSeek Chat és **molt més econòmic** que altres models:
 - **Input**: $0.14 per milió de tokens (~750.000 paraules)
 - **Output**: $0.28 per milió de tokens (~750.000 paraules)
 
-Una conversa típica amb NEXia (20 missatges):
+Una conversa típica amb Alba (20 missatges):
 - ~$0.0001 - $0.001 per conversa (aproximadament **10-50 vegades més barat** que Claude!)
 
 **Avantatges de DeepSeek**:

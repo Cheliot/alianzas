@@ -722,20 +722,20 @@ footer::before {
         font-size: 1.4em;
     }
 
-    .nexia-chat {
+    .alba-chat {
         right: 10px;
         left: 10px;
         width: auto;
         bottom: 90px;
     }
 
-    .nexia-button {
+    .alba-button {
         right: 20px;
         bottom: 20px;
     }
 }
 
-/* Nexia - Assistent Virtual */
+/* Alba - Assistent Virtual */
 .floating-button {
     position: fixed;
     width: 60px;
@@ -755,7 +755,7 @@ footer::before {
     transform: scale(1.1);
 }
 
-.nexia-button {
+.alba-button {
     bottom: 30px;
     right: 30px;
     background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
@@ -763,11 +763,11 @@ footer::before {
     box-shadow: 0 4px 16px rgba(74, 147, 122, 0.4);
 }
 
-.nexia-button:hover {
+.alba-button:hover {
     box-shadow: 0 6px 30px rgba(74, 147, 122, 0.6);
 }
 
-.nexia-chat {
+.alba-chat {
     position: fixed;
     bottom: 100px;
     right: 30px;
@@ -783,7 +783,7 @@ footer::before {
     backdrop-filter: blur(20px);
 }
 
-.nexia-chat.open {
+.alba-chat.open {
     display: flex;
     animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -793,7 +793,7 @@ footer::before {
     to { transform: translateY(0); opacity: 1; }
 }
 
-.nexia-header {
+.alba-header {
     padding: 20px;
     border-bottom: 1px solid rgba(74, 147, 122, 0.3);
     display: flex;
@@ -801,25 +801,25 @@ footer::before {
     align-items: center;
 }
 
-.nexia-header h3 {
+.alba-header h3 {
     margin: 0;
     color: var(--color-accent);
     font-family: inherit;
     font-size: 1.2rem;
 }
 
-.nexia-header h3::before {
+.alba-header h3::before {
     content: none;
 }
 
-.nexia-header p {
+.alba-header p {
     margin: 4px 0 0 0;
     color: #8ab4f8;
     font-size: 0.75rem;
 }
 
-.nexia-config,
-.nexia-close {
+.alba-config,
+.alba-close {
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -831,16 +831,16 @@ footer::before {
     transition: all 0.2s;
 }
 
-.nexia-config:hover,
-.nexia-close:hover {
+.alba-config:hover,
+.alba-close:hover {
     background: rgba(74, 147, 122, 0.3);
 }
 
-.nexia-close:hover {
+.alba-close:hover {
     transform: rotate(90deg);
 }
 
-.nexia-messages {
+.alba-messages {
     flex: 1;
     overflow-y: auto;
     padding: 20px;
@@ -849,7 +849,7 @@ footer::before {
     gap: 12px;
 }
 
-.nexia-message {
+.alba-message {
     max-width: 80%;
     padding: 12px 16px;
     border-radius: 12px;
@@ -863,28 +863,28 @@ footer::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.nexia-message.bot {
+.alba-message.bot {
     align-self: flex-start;
     background: linear-gradient(135deg, rgba(74, 147, 122, 0.2), rgba(56, 118, 97, 0.2));
     border: 1px solid rgba(74, 147, 122, 0.3);
     color: #fff8f0;
 }
 
-.nexia-message.user {
+.alba-message.user {
     align-self: flex-end;
     background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
     color: white;
     font-weight: 500;
 }
 
-.nexia-input-area {
+.alba-input-area {
     padding: 16px;
     border-top: 1px solid rgba(74, 147, 122, 0.3);
     display: flex;
     gap: 8px;
 }
 
-.nexia-input {
+.alba-input {
     flex: 1;
     background: rgba(74, 147, 122, 0.1);
     border: 1px solid rgba(74, 147, 122, 0.3);
@@ -895,16 +895,16 @@ footer::before {
     font-size: 0.9rem;
 }
 
-.nexia-input::placeholder {
+.alba-input::placeholder {
     color: rgba(74, 147, 122, 0.5);
 }
 
-.nexia-input:focus {
+.alba-input:focus {
     outline: none;
     border-color: rgba(74, 147, 122, 0.6);
 }
 
-.nexia-send {
+.alba-send {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -916,18 +916,18 @@ footer::before {
     transition: all 0.2s;
 }
 
-.nexia-send:hover {
+.alba-send:hover {
     transform: scale(1.1);
 }
 
-.nexia-suggestions {
+.alba-suggestions {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 8px;
 }
 
-.nexia-suggestion {
+.alba-suggestion {
     background: rgba(74, 147, 122, 0.2);
     border: 1px solid rgba(74, 147, 122, 0.3);
     border-radius: 16px;
@@ -938,7 +938,7 @@ footer::before {
     transition: all 0.2s;
 }
 
-.nexia-suggestion:hover {
+.alba-suggestion:hover {
     background: rgba(74, 147, 122, 0.3);
     border-color: rgba(74, 147, 122, 0.5);
 }

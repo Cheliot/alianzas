@@ -56,29 +56,29 @@ document.querySelectorAll('.back-to-top').forEach(button => {
     });
 });
 
-// NEXia - Assistent Virtual amb DeepSeek API
+// Alba - Assistent Virtual amb DeepSeek API
 // ⚠️ IMPORTANT: L'API key NO està al codi per seguretat
-// L'usuari ha de configurar-la la primera vegada que usa NEXia
+// L'usuari ha de configurar-la la primera vegada que usa Alba
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
-let nexiaTimeout;
+let albaTimeout;
 let conversationHistory = [];
 
 // Gestió segura de l'API key (localStorage)
 function getAPIKey() {
-    let apiKey = localStorage.getItem('nexia_api_key');
+    let apiKey = localStorage.getItem('alba_api_key');
 
     if (!apiKey) {
         apiKey = prompt(
-            '🔑 NEXia necessita l\'API key de DeepSeek per funcionar.\n\n' +
+            '🔑 Alba necessita l\'API key de DeepSeek per funcionar.\n\n' +
             'Obtén-la a: https://platform.deepseek.com/api_keys\n\n' +
             'La clau es guardarà localment al teu navegador (localStorage).\n\n' +
             'Enganxa la teva API key:'
         );
 
         if (apiKey && apiKey.trim().startsWith('sk-')) {
-            localStorage.setItem('nexia_api_key', apiKey.trim());
-            alert('✅ API key guardada! NEXia ja està llesta per ajudar-te.');
+            localStorage.setItem('alba_api_key', apiKey.trim());
+            alert('✅ API key guardada! Alba ja està llesta per ajudar-te.');
         } else if (apiKey) {
             alert('❌ API key invàlida. Ha de començar amb "sk-"');
             return null;
@@ -90,14 +90,14 @@ function getAPIKey() {
 
 function clearAPIKey() {
     if (confirm('Vols esborrar l\'API key guardada?')) {
-        localStorage.removeItem('nexia_api_key');
+        localStorage.removeItem('alba_api_key');
         alert('✅ API key esborrada. Se\'t demanarà de nou la propera vegada.');
     }
 }
 
-// Context del document per a NEXia
+// Context del document per a Alba
 const documentContext = `
-Ets NEXia, la Guardiana del Quetzal, un assistent virtual especialitzat en informació sobre el Encuentro del Quetzal.
+Ets Alba, la Guardiana del Quetzal, un assistent virtual especialitzat en informació sobre el Encuentro del Quetzal.
 
 INFORMACIÓ CLAU:
 
@@ -166,52 +166,52 @@ INSTRUCCIONS:
 - Sigues respectuosa amb els guardians i el procés sagrat
 `;
 
-function initializeNexia() {
-    const messagesContainer = document.getElementById('nexiaMessages');
+function initializeAlba() {
+    const messagesContainer = document.getElementById('albaMessages');
     conversationHistory = []; // Reset conversation
     messagesContainer.innerHTML = `
-        <div class="nexia-message bot">
-            Benvingut! ✨ Sóc NEXia, Guardiana del Quetzal. Estic aquí per ajudar-te amb informació sobre el Encuentro del Quetzal i la coordinació de la reunió. Com et puc ajudar?
-            <div class="nexia-suggestions">
-                <div class="nexia-suggestion" onclick="askNexia('reunio')">Propera Reunió</div>
-                <div class="nexia-suggestion" onclick="askNexia('delegats')">Delegats</div>
-                <div class="nexia-suggestion" onclick="askNexia('carta')">Carta del Chief Phil</div>
+        <div class="alba-message bot">
+            Benvingut! ✨ Sóc Alba, Guardiana del Quetzal. Estic aquí per ajudar-te amb informació sobre el Encuentro del Quetzal i la coordinació de la reunió. Com et puc ajudar?
+            <div class="alba-suggestions">
+                <div class="alba-suggestion" onclick="askAlba('reunio')">Propera Reunió</div>
+                <div class="alba-suggestion" onclick="askAlba('delegats')">Delegats</div>
+                <div class="alba-suggestion" onclick="askAlba('carta')">Carta del Chief Phil</div>
             </div>
         </div>
     `;
 }
 
-function toggleNexia() {
-    const chat = document.getElementById('nexiaChat');
+function toggleAlba() {
+    const chat = document.getElementById('albaChat');
     const isOpen = chat.classList.contains('open');
 
-    if (!isOpen && !document.getElementById('nexiaMessages').innerHTML) {
-        initializeNexia();
+    if (!isOpen && !document.getElementById('albaMessages').innerHTML) {
+        initializeAlba();
     }
 
     chat.classList.toggle('open');
 }
 
-async function sendNexiaMessage() {
-    const input = document.getElementById('nexiaInput');
+async function sendAlbaMessage() {
+    const input = document.getElementById('albaInput');
     const message = input.value.trim();
     if (!message) return;
 
-    addNexiaMessage(message, 'user');
+    addAlbaMessage(message, 'user');
     input.value = '';
 
     // Mostrar indicador de càrrega
-    const loadingId = addNexiaMessage('✨ Pensant...', 'bot');
+    const loadingId = addAlbaMessage('✨ Pensant...', 'bot');
 
     try {
         const response = await callDeepSeekAPI(message);
-        removeNexiaMessage(loadingId);
-        addNexiaMessage(response, 'bot');
+        removeAlbaMessage(loadingId);
+        addAlbaMessage(response, 'bot');
     } catch (error) {
-        removeNexiaMessage(loadingId);
-        console.error('Error NEXia:', error);
+        removeAlbaMessage(loadingId);
+        console.error('Error Alba:', error);
         const errorMsg = error.message || 'Ho sento, he tingut un problema tècnic. Torna-ho a provar en un moment.';
-        addNexiaMessage(`❌ ${errorMsg}`, 'bot');
+        addAlbaMessage(`❌ ${errorMsg}`, 'bot');
     }
 }
 
@@ -263,7 +263,7 @@ async function callDeepSeekAPI(userMessage) {
 
         // Si l'error és d'autenticació, esborrar la clau guardada
         if (response.status === 401) {
-            localStorage.removeItem('nexia_api_key');
+            localStorage.removeItem('alba_api_key');
             throw new Error('API key invàlida. Torna-ho a provar.');
         }
 
@@ -282,38 +282,38 @@ async function callDeepSeekAPI(userMessage) {
     return assistantMessage;
 }
 
-function askNexia(topic) {
+function askAlba(topic) {
     const questions = {
         'reunio': '¿Cuándo es la próxima reunión?',
         'delegats': '¿Cuántos delegados se seleccionarán?',
         'carta': '¿De qué trata la carta del Chief Phil?'
     };
-    const input = document.getElementById('nexiaInput');
+    const input = document.getElementById('albaInput');
     input.value = questions[topic];
-    sendNexiaMessage();
+    sendAlbaMessage();
 }
 
-function addNexiaMessage(text, type) {
-    const messagesContainer = document.getElementById('nexiaMessages');
+function addAlbaMessage(text, type) {
+    const messagesContainer = document.getElementById('albaMessages');
     const messageDiv = document.createElement('div');
     const messageId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
     messageDiv.id = messageId;
-    messageDiv.className = `nexia-message ${type}`;
+    messageDiv.className = `alba-message ${type}`;
     messageDiv.innerHTML = text;
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
     return messageId;
 }
 
-function removeNexiaMessage(messageId) {
+function removeAlbaMessage(messageId) {
     const messageDiv = document.getElementById(messageId);
     if (messageDiv) {
         messageDiv.remove();
     }
 }
 
-// Inicializar NEXia cuando se carga la página
+// Inicializar Alba cuando se carga la página
 document.addEventListener('DOMContentLoaded', () => {
-    // NEXia se inicializará cuando se abra por primera vez
-    console.log('NEXia lista para ayudar ✨');
+    // Alba se inicializará cuando se abra por primera vez
+    console.log('Alba lista para ayudar ✨');
 });
